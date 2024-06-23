@@ -35,7 +35,6 @@ namespace PruebaCorta.Controllers
 
             if (creacionExitosa)
             {
-                //await _accesoDatos.Crear(usuario);
                 return RedirectToAction("Login", "Usuario");
             }
             else
@@ -75,7 +74,7 @@ namespace PruebaCorta.Controllers
 
             if (loginCorrecto)
             {
-                // Crear la cookie de autenticación
+               
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, usuario.Nombre)
@@ -93,9 +92,6 @@ namespace PruebaCorta.Controllers
                 ModelState.AddModelError(string.Empty, "Correo o contraseña incorrectos");
                 return View(usuario);
             }
-
-
-            // Inicio de sesión fallido o modelo de usuario inválido
 
         }
 

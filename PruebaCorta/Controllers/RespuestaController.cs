@@ -39,11 +39,11 @@ namespace PruebaCorta.Controllers
         {
             string nombreUsuario = User.Identity.Name;
 
-            // Asigna el nombre del usuario al modelo
+            
             respuesta.Nombre = nombreUsuario;
-            //Recibe la respuesta de la vista
+           
             respuesta.Respuesta = variableVista;
-            //Recibe el id de la pregunta
+            
             if (id > 0)
             {
                 respuesta.IdPregunta = id;

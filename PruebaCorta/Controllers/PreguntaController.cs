@@ -34,12 +34,11 @@ namespace PruebaCorta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PreguntaM pregunta, string variableVista)
         {
-            // Recupera el nombre del usuario autenticado
+            
             string nombreUsuario = User.Identity.Name;
 
-            // Asigna el nombre del usuario al modelo
             pregunta.Nombre = nombreUsuario;
-            //Recibe la pregunta de la vista
+           
             pregunta.Pregunta = variableVista;
 
             pregunta.Estado = 1;
