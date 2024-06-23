@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PreguntaM>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Lista de Preguntas</h2>
+
+<a href="@Url.Action("Create", "Pregunta")" class="btn btn-primary">Crear Pregunta</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Pregunta</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pregunta in Model)
+        {
+            <tr>
+                <td>@pregunta.Fecha</td>
+                <td>@pregunta.Nombre</td>
+                <td>@pregunta.Pregunta</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Acciones">
+                        @if (pregunta.Estado == 1)
+                        {
+                            <a href="@Url.Action("Create", "Respuesta", new { id = pregunta.Id })" class="btn btn-primary">Responder</a>
+                            @if (pregunta.Nombre == User.Identity.Name)
+                            {
+                                <form id="DesactivarForm" asp-controller="Pregunta" asp-action="EstadoDesactivar" method="post">
+                                    <input type="hidden" name="id" value="@pregunta.Id" />
+                                    <button type="submit" class="btn btn-danger">Desactivar</button>
+                                </form>
+                            }
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" disabled>Bloqueado</button>
+                            @if (pregunta.Nombre == User.Identity.Name)
+                            {
+                                <form id="ActivarForm" asp-controller="Pregunta" asp-action="EstadoActivar" method="post">
+                                    <input type="hidden" name="id" value="@pregunta.Id" />
+                                    <button type="submit" class="btn btn-danger">Activar</button>
+                                </form>
+                            }
+                        }
+                        <a href="@Url.Action("Index", "Respuesta", new { id = pregunta.Id })" class="btn btn-secondary">Ver Respuestas</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RespuestaM>
+@{
+    Layout = "_Layout";
+}
+
+<h2>Lista de Respuestas</h2>
+
+<div class=" mt-3">
+    <div class="d-inline-block ml-2">
+        <a href="@Url.Action("Index", "Pregunta")" class="btn btn-secondary">Regresar</a>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Respuesta</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var respuesta in Model)
+            {
+                <tr>
+                    <td>@respuesta.Fecha</td>
+                    <td>@respuesta.Nombre</td>
+                    <td>@respuesta.Respuesta</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Respuesta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td colspan="3" style="text-align: center; font-size: 20px;">No hay respuestas.</td>
+            </tr>
+        </tbody>
+    </table>
+}
