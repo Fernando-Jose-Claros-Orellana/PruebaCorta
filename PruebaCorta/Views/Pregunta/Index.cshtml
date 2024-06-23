@@ -30,7 +30,7 @@
                             <a href="@Url.Action("Create", "Respuesta", new { id = pregunta.Id })" class="btn btn-primary">Responder</a>
                             @if (pregunta.Nombre == User.Identity.Name)
                             {
-                                <form id="DesactivarForm" asp-controller="Pregunta" asp-action="EstadoDesactivar" method="post">
+                                <form asp-controller="Pregunta" asp-action="EstadoDesactivar" method="post">
                                     <input type="hidden" name="id" value="@pregunta.Id" />
                                     <button type="submit" class="btn btn-danger">Desactivar</button>
                                 </form>
@@ -41,7 +41,7 @@
                             <button class="btn btn-primary" disabled>Bloqueado</button>
                             @if (pregunta.Nombre == User.Identity.Name)
                             {
-                                <form id="ActivarForm" asp-controller="Pregunta" asp-action="EstadoActivar" method="post">
+                                <form asp-controller="Pregunta" asp-action="EstadoActivar" method="post">
                                     <input type="hidden" name="id" value="@pregunta.Id" />
                                     <button type="submit" class="btn btn-danger">Activar</button>
                                 </form>
